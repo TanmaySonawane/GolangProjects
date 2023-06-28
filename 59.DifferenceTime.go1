@@ -1,0 +1,47 @@
+package main
+
+import "fmt"
+
+func main() {
+	Year1 := 2003
+	Year2 := 2005 //Year2 has to be > Year1
+	Month1 := 11
+	Month2 := 12
+	Day1 := 17
+	Day2 := 19
+	Hour1 := 3
+	Hour2 := 7
+	Minute1 := 44
+	Minute2 := 5
+	diffYr := 0
+	diffMo := 0
+	diffDa := 0
+	diffHr := 0
+	diffMi := 0
+	for Minute1 > Minute2 {
+		diffHr--
+		Minute2 += 60
+	}
+	diffMi = Minute2 - Minute1
+	for Hour1 > Hour2 {
+		diffDa--
+		Hour2 += 24
+	}
+	diffHr += (Hour2 - Hour1)
+	for Day1 > Day2 {
+		diffYr--
+		Day2 += 365
+	}
+	diffDa += (Day2 - Day1)
+	for Month1 > Month2 {
+		diffYr--
+		Month2 += 12
+	}
+	diffMo += (Month2 - Month1)
+	for Year1 > Year2 {
+		diffYr++
+		Year2++
+	}
+	diffYr += (Year2 - Year1)
+	fmt.Println("The difference between the time periods is: ", "Years:", diffYr, "Months", diffMo, "Days", diffDa, "Hours", diffHr, "Minutes", diffMi)
+}

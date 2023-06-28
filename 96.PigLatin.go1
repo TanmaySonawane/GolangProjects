@@ -1,0 +1,29 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	s := "The quick brown fox jumped over the fence "
+	firstChFound := false
+	firstChOfWord := ""
+	wordRemainChs := ""
+
+	for i := 0; i < len(s); i++ {
+		ch := string(s[i])
+		if firstChFound == false && ch != " " {
+			firstChOfWord = ch
+			firstChFound = true
+			continue
+		}
+
+		if ch == " " {
+			firstChFound = false
+			pigLatinWord := wordRemainChs + firstChOfWord + "ay "
+			fmt.Printf(pigLatinWord)
+			wordRemainChs = ""
+			firstChOfWord = ""
+		}
+		wordRemainChs += ch
+	}
+}

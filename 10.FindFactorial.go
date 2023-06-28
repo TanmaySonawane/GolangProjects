@@ -1,3 +1,5 @@
+// this code is to find the factorial of a number without using recursion
+
 package main
 
 import (

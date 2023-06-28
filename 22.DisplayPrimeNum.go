@@ -1,3 +1,4 @@
+//given a range, starting with 'begin' and ending with 'end', this code prints out all the prime numbers in between the range
 package main
 
 import "fmt"

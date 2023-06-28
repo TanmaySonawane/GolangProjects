@@ -1,3 +1,4 @@
+// prints out the factors of the given number num
 package main
 
 import "fmt"

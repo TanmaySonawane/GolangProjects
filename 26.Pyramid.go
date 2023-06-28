@@ -1,3 +1,4 @@
+// prints a pyramid of stars 
 package main
 
 import (

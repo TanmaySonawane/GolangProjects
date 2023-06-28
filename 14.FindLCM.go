@@ -1,3 +1,4 @@
+// code for finding least common multiple
 package main
 
 import "fmt"

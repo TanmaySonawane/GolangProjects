@@ -1,3 +1,4 @@
+//using a for loop, this code prints all capital alphabet from A to Z
 package main
 
 import "fmt"

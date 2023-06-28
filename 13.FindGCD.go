@@ -1,3 +1,4 @@
+// code for finding the greatest common denominator
 package main
 
 import "fmt"

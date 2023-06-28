@@ -1,3 +1,4 @@
+//checks if the given variable 'num' is a number palindrome, meaning it is the same forwards and backwards
 package main
 
 import (

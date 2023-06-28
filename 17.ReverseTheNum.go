@@ -1,3 +1,4 @@
+// reverses a number and prints it
 package main
 
 import "fmt"

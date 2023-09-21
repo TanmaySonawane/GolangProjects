@@ -1,3 +1,4 @@
+// 'print(err)' has been added to catch errors
 package main
 
 import (
@@ -12,7 +13,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var db *sql.DB
+var db *sql.DB // variable for database
 var directory string = "C:\\Users\\tanma\\Downloads\\NewYorkYellowTaxiData"
 
 func ReadFile(wg *sync.WaitGroup, chan1 chan fs.FileInfo, db *sql.DB) {
@@ -23,12 +24,14 @@ func ReadFile(wg *sync.WaitGroup, chan1 chan fs.FileInfo, db *sql.DB) {
 		if !ok {
 			break
 		}
+		// infinite loop only ends when there are no more files to be opened
 		file, err := os.Open(directory + "\\" + files.Name())
 		if err != nil {
 			fmt.Println("error opening file", err)
 			continue
 		}
 
+		// csv reader to read a file in csv format
 		reader := csv.NewReader(file)
 		reader.Comma = ','
 		rec, err3 := reader.Read()
@@ -37,6 +40,7 @@ func ReadFile(wg *sync.WaitGroup, chan1 chan fs.FileInfo, db *sql.DB) {
 			continue
 		}
 
+		// SQL query (without values for now)
 		query := "INSERT INTO Yellow_Tripdata (vendorid, tpep_pickup_datetime, tpep_dropoff_datetime, passenger_count, trip_distance, ratecodeid, store_and_fwd_flag, pulocationid, dolocationid, payment_type, fare_amount, extra, mta_tax, tip_amount, tolls_amount, improvement_surcharge, total_amount) VALUES "
 		tempQuery := ""
 		counter := 0
@@ -46,6 +50,7 @@ func ReadFile(wg *sync.WaitGroup, chan1 chan fs.FileInfo, db *sql.DB) {
 			if err == io.EOF {
 				break
 			}
+			// avoid reading header
 			if string(rec[0]) == "VendorID" {
 				continue
 			}
@@ -54,6 +59,7 @@ func ReadFile(wg *sync.WaitGroup, chan1 chan fs.FileInfo, db *sql.DB) {
 				continue
 			}
 			if tempQuery != "" {
+				// if tempquery is not empty, insert the values from the rec variable which reads line by line
 				queryVal := "(" + rec[0] + "," + "'" + rec[1] + "'" + "," + "'" + rec[2] + "'" + "," + rec[3] + "," + rec[4] + "," + rec[5] + "," + "'" + rec[6] + "'" + "," + rec[7] + "," + rec[8] + "," + rec[9] + "," + rec[10] + "," + rec[11] + "," + rec[12] + "," + rec[13] + "," + rec[14] + "," + rec[15] + "," + rec[16] + ")"
 				tempQuery = tempQuery + "," + queryVal
 			} else {
@@ -62,7 +68,10 @@ func ReadFile(wg *sync.WaitGroup, chan1 chan fs.FileInfo, db *sql.DB) {
 			}
 
 			if counter%800 == 0 {
+				// putting the query and the values together
+				// inserting 800 records at once
 				tempQuery = query + tempQuery
+				//executing the query
 				_, err2 := db.Exec(tempQuery)
 				if err2 != nil {
 					fmt.Println("Could not add to database", err)
@@ -91,6 +100,8 @@ func main() {
 	var wg sync.WaitGroup
 	workers := 18
 	wg.Add(workers)
+
+	// channel to pass the files
 	chan1 := make(chan fs.FileInfo)
 
 	// connect to sql server
@@ -102,6 +113,8 @@ func main() {
 	defer db.Close()
 
 	for i := 0; i < workers; i++ {
+		// 18 workers for 18 files = 1 worker per file
+		// the workers need to be ready before the files are opened
 		go ReadFile(&wg, chan1, db)
 	}
 

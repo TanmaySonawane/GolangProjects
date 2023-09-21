@@ -1,3 +1,4 @@
+// Recursively adds a number to its previous number
 package main
 
 import "fmt"

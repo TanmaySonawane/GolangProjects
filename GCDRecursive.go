@@ -1,3 +1,4 @@
+//Find greatest common denominator using recursion
 package main
 
 import "fmt"

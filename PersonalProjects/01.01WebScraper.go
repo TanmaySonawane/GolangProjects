@@ -1,3 +1,4 @@
+// 'print(err)' has been added to catch errors
 package main
 
 import (
@@ -17,10 +18,8 @@ import (
 func ReadWriteFile(wg *sync.WaitGroup, chan1 chan string) {
 	// take the websites form the channel
 	defer wg.Done()
-	if err := recover(); err != nil {
-		fmt.Println(err)
-	}
 	for {
+		// only after the channel is closed, meaning there are no more websites to visit, this infinite loop will stop
 		rec2, ok := <-chan1
 		if !ok {
 			fmt.Println("Channel closed")
@@ -32,6 +31,8 @@ func ReadWriteFile(wg *sync.WaitGroup, chan1 chan string) {
 		}
 		rec2 = "http://" + rec2
 		req, _ := http.NewRequest("GET", rec2, nil)
+
+		// user-agent was inserted so that the website does not reject connection request thinking it is a bot
 		req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0")
 		resp, err := client.Do(req)
 		if os.IsTimeout(err) {
@@ -59,7 +60,7 @@ func ReadWriteFile(wg *sync.WaitGroup, chan1 chan string) {
 		if err := os.Mkdir(path, os.ModePerm); os.IsNotExist(err) {
 			err3 := os.Mkdir(path, os.ModePerm)
 			if err3 != nil {
-				fmt.Println("Could not make file with the same initial letter as the website", err3)
+				fmt.Println("Could not make file", err3)
 				continue
 			}
 		}
@@ -97,6 +98,8 @@ func File(wg *sync.WaitGroup, workers int) {
 		fmt.Println(err)
 		return
 	}
+
+	// CSV reader was used because the file was in csv format
 	reader := csv.NewReader(file)
 	reader.Comma = ','
 	if err != nil {
@@ -104,7 +107,8 @@ func File(wg *sync.WaitGroup, workers int) {
 		return
 	}
 
-	//Pass the websites to the channel
+	//Pass the websites (or each line) to the channel
+	// infinite for loop only stops when it reaches end of file (EOF)
 	for {
 		rec, err := reader.Read()
 		if err == io.EOF {

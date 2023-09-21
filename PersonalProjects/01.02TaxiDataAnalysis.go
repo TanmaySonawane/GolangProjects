@@ -82,6 +82,7 @@ func ReadFile(wg *sync.WaitGroup, chan1 chan fs.FileInfo, db *sql.DB) {
 			counter++
 		}
 
+		// if there is still some data left that was not added to the DB, add it
 		if tempQuery != "" {
 			queryVal := "(" + rec[0] + "," + "'" + rec[1] + "'" + "," + "'" + rec[2] + "'" + "," + rec[3] + "," + rec[4] + "," + rec[5] + "," + "'" + rec[6] + "'" + "," + rec[7] + "," + rec[8] + "," + rec[9] + "," + rec[10] + "," + rec[11] + "," + rec[12] + "," + rec[13] + "," + rec[14] + "," + rec[15] + "," + rec[16] + ")"
 			tempQuery = tempQuery + "," + queryVal

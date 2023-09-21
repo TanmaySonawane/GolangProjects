@@ -1,3 +1,4 @@
+// use recursion to find factorial
 package main
 
 import "fmt"

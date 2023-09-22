@@ -1,3 +1,4 @@
+// made a simple linked list
 package main
 
 import (

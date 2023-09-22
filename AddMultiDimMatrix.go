@@ -1,3 +1,4 @@
+// adding two, 2 dimensional arrays
 package main
 
 import (

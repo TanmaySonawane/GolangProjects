@@ -1,3 +1,4 @@
+// raising a to the power b without using power or times operator
 package main
 
 import (

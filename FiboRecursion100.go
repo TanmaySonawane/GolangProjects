@@ -1,3 +1,4 @@
+// prints the fibonacci sequence using recursion
 package main
 
 import "fmt"

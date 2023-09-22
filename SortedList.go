@@ -1,3 +1,4 @@
+// sorts the given two arrays and produces a new array
 package main
 
 import "fmt"

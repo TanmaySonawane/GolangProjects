@@ -1,3 +1,4 @@
+// reads the contents of a file
 package main
 
 import (

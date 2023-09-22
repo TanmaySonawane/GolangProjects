@@ -1,3 +1,4 @@
+//concatenates two strings in a different way: for example aabbcc + ccddee would turn into acacbdbdcece
 package main
 
 import (

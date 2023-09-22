@@ -1,3 +1,4 @@
+// are there any 3 consecutive numbers in the given array that add up to 'x'?
 package main
 
 import "fmt"

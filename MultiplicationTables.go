@@ -1,3 +1,4 @@
+// prints multiplication tables from 1 to the given number 'a'
 package main
 
 import "fmt"

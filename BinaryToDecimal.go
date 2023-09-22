@@ -1,3 +1,4 @@
+// changes a number from binary to decimal
 package main
 
 import (

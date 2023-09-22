@@ -1,3 +1,4 @@
+// write a sentence to a file using io
 package main
 
 import (
@@ -33,7 +34,7 @@ func main() {
 		}
 	}
 
-	const name, age = "Pramey Senapati", 34
+	const name, age = "Pramey ", 34
 
 	n, err := fmt.Fprintln(f, name, "is", age, "years old.")
 	fmt.Println(n, "bytes written")

@@ -1,3 +1,4 @@
+// manually traversing array to access a particular element
 package main
 
 import (

@@ -1,3 +1,4 @@
+// implemented a simple stack
 package main
 
 import (

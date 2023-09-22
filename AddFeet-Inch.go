@@ -1,3 +1,4 @@
+// when given two distances in feet and inches, this code correctly adds them and give the final answer in feet and inches
 package main
 
 import "fmt"

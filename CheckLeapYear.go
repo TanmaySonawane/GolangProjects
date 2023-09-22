@@ -1,3 +1,4 @@
+// checks if the given year is a leap year
 package main
 
 import (

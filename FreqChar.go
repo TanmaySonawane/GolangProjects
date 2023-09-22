@@ -1,3 +1,4 @@
+// find out how often a particular character appears in a string
 package main
 
 import "fmt"

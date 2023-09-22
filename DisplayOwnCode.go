@@ -1,3 +1,4 @@
+// code that displays its own code as the output
 package main
 
 import (
@@ -7,7 +8,7 @@ import (
 )
 
 func main() {
-	content, err := os.ReadFile("64.DisplayOwnCode.go")
+	content, err := os.ReadFile("DisplayOwnCode.go")
 	if err != nil {
 		log.Fatal(err)
 	}

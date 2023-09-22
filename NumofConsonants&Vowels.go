@@ -1,3 +1,4 @@
+// code that gives you the number of vowels and consonants for a given string
 package main
 
 import (

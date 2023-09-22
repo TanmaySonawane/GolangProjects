@@ -1,3 +1,4 @@
+// multiply 2 dimensional matricies
 package main
 
 import (

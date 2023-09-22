@@ -1,3 +1,4 @@
+// finds the maximum number from the array
 package main
 
 import (

@@ -1,3 +1,4 @@
+// rorates a list by k elements
 package main
 
 import "fmt"

@@ -1,3 +1,4 @@
+// divide numbers and find their quotient and remainder without using the division operator
 package main
 
 import "fmt"

@@ -1,3 +1,4 @@
+// find the second maximum number in an array
 package main
 
 import (

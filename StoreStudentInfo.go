@@ -1,3 +1,4 @@
+// created a struct to store student information
 package main
 
 import "fmt"

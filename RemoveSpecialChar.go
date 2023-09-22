@@ -1,3 +1,4 @@
+// code that keeps only letters in a string and removes the rest
 package main
 
 import (

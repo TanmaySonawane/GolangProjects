@@ -1,3 +1,4 @@
+// code to manually compute the length of a string
 package main
 
 import "fmt"

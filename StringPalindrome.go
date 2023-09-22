@@ -1,3 +1,4 @@
+// tells whether a string is a palindrome or not
 package main
 
 import (

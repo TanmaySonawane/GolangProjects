@@ -1,4 +1,4 @@
-//
+// swap 2 variables WITHOUT using a third variable
 package main
 
 import (

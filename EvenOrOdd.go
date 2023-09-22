@@ -1,3 +1,4 @@
+// code to find whether a given number is even or odd
 package main
 
 import (

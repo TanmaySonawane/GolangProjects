@@ -1,3 +1,4 @@
+// Asks the user to guess a number and checks if it matches the written number, keeps track of user's tries
 package main
 
 import (

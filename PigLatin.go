@@ -1,3 +1,6 @@
+// turns any english sentence into pig latin. In Pig latin, the basic rule is to switch the first consonant 
+// to the end of the term and then adding suffix “ay” to form a new word
+// For instance, the word 'pig' would become igp+ay which becomes igpay
 package main
 
 import "fmt"

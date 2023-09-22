@@ -1,3 +1,4 @@
+// sorts the elements in the string alphabetically
 package main
 
 import (

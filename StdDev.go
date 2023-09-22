@@ -1,3 +1,4 @@
+// finding standard deviation of an array
 package main
 
 import (

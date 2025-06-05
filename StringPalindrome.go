@@ -5,25 +5,25 @@ import (
 	"fmt"
 )
 
-func main() {
-	s := "hannnah"
+func isPalindrome(s string) bool {
 	i := 0
 	j := len(s) - 1
-	palindrome := true
-	for i != j {
+
+	for i < j {
 		if s[i] != s[j] {
-			palindrome = false
+			return false
 		}
 		i++
 		j--
-		if i+1 == j {
-			if s[i] != s[j] {
-				palindrome = false
-			}
-			break
-		}
 	}
-	if palindrome {
+
+	return true
+}
+
+func main() {
+	s := "hannnah"
+
+	if isPalindrome(s) {
 		fmt.Println(s, "is a palindrome")
 	} else {
 		fmt.Println(s, "is NOT a palindrome")
